@@ -1,0 +1,17 @@
+{
+  "name": "Πέτυχες! — Φροντιστήριο",
+  "short_name": "Πέτυχες!",
+  "description": "Πλατφόρμα φροντιστηρίου για διαχειριστές, καθηγητές και γονείς.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1c3a52",
+  "theme_color": "#1c3a52",
+  "lang": "el",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
