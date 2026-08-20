@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GraduationCap, ArrowRight, CalendarDays, FileText, TrendingUp, Bell, MessageCircle } from "lucide-react";
-import heroStudents from "@/assets/hero-students.jpg";
-import heroTeacher from "@/assets/hero-teacher.jpg";
-import heroStudy from "@/assets/hero-study.jpg";
+import heroStudents from "@/assets/hero-storefront.jpg";
+import heroTeacher from "@/assets/hero-classroom.jpg";
+import heroStudy from "@/assets/hero-drawings.jpg";
 import appScreenshot from "@/assets/app-screenshot.png";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
