@@ -12,3 +12,4 @@ Allow: /
 
 User-agent: *
 Allow: /
+Sitemap: https://petyxes-site.vercel.app/sitemap.xml
