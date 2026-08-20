@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { GraduationCap, ArrowRight } from "lucide-react";
-
+import { GraduationCap, ArrowRight, CalendarDays, FileText, TrendingUp, Bell, MessageCircle } from "lucide-react";
 import heroStudents from "@/assets/hero-students.jpg";
 import heroTeacher from "@/assets/hero-teacher.jpg";
-import heroStudy from "@/assets/hero-study.jpg";
+import appScreenshot from "@/assets/app-screenshot.png";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -243,8 +242,54 @@ function PublicSite() {
             </div>
           </div>
         </section>
-
-        {/* Offerings */}
+{/* App Promo */}
+        <section className="mx-auto max-w-7xl px-5 py-20 md:py-28">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-primary-foreground">
+                <span className="text-xs font-bold uppercase tracking-wider">Νέα εφαρμογή «Πέτυχες!»</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+                Η μελέτη… στο χέρι σου!
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Η νέα εφαρμογή του φροντιστηρίου μας έρχεται για να κάνει τη διαφορά τη νέα σχολική χρονιά. Όλες οι πληροφορίες, εύκολα, γρήγορα, με ασφάλεια.
+              </p>
+              <ul className="space-y-5">
+                {[
+                  { icon: CalendarDays, title: "Πρόγραμμα μαθημάτων", text: "Έχεις πάντα μαζί σου το εβδομαδιαίο πρόγραμμα." },
+                  { icon: FileText, title: "Υλικό μαθημάτων", text: "Κατέβασε σημειώσεις, ασκήσεις και διαγωνίσματα εύκολα και γρήγορα." },
+                  { icon: TrendingUp, title: "Παρακολούθηση προόδου", text: "Δες την εξέλιξή σου και τους βαθμούς σου αναλυτικά." },
+                  { icon: Bell, title: "Ειδοποιήσεις", text: "Μείνε ενημερωμένος για ανακοινώσεις, αλλαγές και σημαντικές υπενθυμίσεις." },
+                  { icon: MessageCircle, title: "Άμεση επικοινωνία", text: "Επικοινώνησε εύκολα με τη γραμματεία και τους καθηγητές." },
+                ].map((f) => {
+                  const Icon = f.icon;
+                  return (
+                    <li key={f.title} className="flex items-start gap-4">
+                      <span className="flex h-11 w-11 flex-none items-center justify-center rounded-2xl bg-accent text-primary">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <div>
+                        <div className="font-bold text-foreground">{f.title}</div>
+                        <div className="text-sm text-muted-foreground">{f.text}</div>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <div className="flex justify-center">
+              <img
+                src={appScreenshot}
+                alt="Η εφαρμογή «Πέτυχες!» σε κινητό"
+                className="w-full max-w-sm rounded-[2rem] shadow-2xl"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </section>
+</parameter>
+      {/* Offerings */}
         <section id="paroxes" className="mx-auto max-w-7xl px-5 py-20 md:py-28">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div className="space-y-4 max-w-2xl">
