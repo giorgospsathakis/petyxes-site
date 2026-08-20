@@ -47,6 +47,11 @@ function CoursesPage() {
               <div key={g.title} className="rounded-[2rem] border border-border bg-card p-8 transition-shadow hover:shadow-xl">
                 <h2 className="text-xl font-bold text-foreground">{g.title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{g.text}</p>
+                {g.title === "Β΄ & Γ΄ Λυκείου — Πανελλαδικές" && (
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Εντατική προετοιμασία <strong className="font-bold text-foreground">σε όλα τα μαθήματα</strong>.
+                  </p>
+                )}
                 <ul className="mt-6 space-y-3">
                   {g.subjects.map((s) => (
                     <li key={s} className="flex items-start gap-3 text-sm font-medium text-foreground">
