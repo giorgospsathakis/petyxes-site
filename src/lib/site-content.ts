@@ -91,3 +91,23 @@ export async function swapOrder(a: SitePost, b: SitePost): Promise<void> {
   const second = await supabase.from("site_posts").update({ sort_order: next.b }).eq("id", b.id);
   if (second.error) throw second.error;
 }
+export type BusinessHours = {
+  weekday_hours: string;
+  saturday_hours: string;
+  sunday_hours: string;
+};
+
+export async function fetchBusinessHours(): Promise<BusinessHours> {
+  const { data, error } = await supabase
+    .from("site_settings")
+    .select("weekday_hours, saturday_hours, sunday_hours")
+    .eq("id", 1)
+    .single();
+  if (error) throw error;
+  return data as BusinessHours;
+}
+
+export async function updateBusinessHours(hours: BusinessHours): Promise<void> {
+  const { error } = await supabase.from("site_settings").update(hours).eq("id", 1);
+  if (error) throw error;
+}
