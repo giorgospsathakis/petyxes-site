@@ -15,7 +15,7 @@ const entries: SitemapEntry[] = [
   { path: "/epikoinonia", changefreq: "monthly", priority: "0.7" },
 ];
 
-export const Route = createFileRoute("/sitemap/xml")({
+export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async ({ request }) => {
