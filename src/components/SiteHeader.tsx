@@ -6,7 +6,7 @@ import logo from "@/assets/logo-petyxes.png";
 
 const links = [
   { to: "/", label: "Αρχική" },
-  { to: "/frontistirio", label: "Το φροντιστήριο" },
+  { to: "/frontistirio", label: "Φροντιστήριο" },
   { to: "/mathimata", label: "Μαθήματα" },
   { to: "/epitychies", label: "Επιτυχίες" },
   { to: "/epikoinonia", label: "Επικοινωνία" },
