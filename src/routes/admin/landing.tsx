@@ -9,9 +9,12 @@ import {
   categoryLabels,
   deleteMedia,
   fetchAllPosts,
+  fetchBusinessHours,
   formatDate,
   swapOrder,
+  updateBusinessHours,
   uploadMedia,
+  type BusinessHours,
   type PostCategory,
   type SitePost,
 } from "@/lib/site-content";
@@ -131,6 +134,62 @@ const emptyForm: FormState = {
   file: null,
 };
 
+function HoursEditor() {
+  const queryClient = useQueryClient();
+  const hoursQuery = useQuery({ queryKey: ["business_hours"], queryFn: fetchBusinessHours });
+  const [form, setForm] = useState<BusinessHours | null>(null);
+  const hours = form ?? hoursQuery.data;
+
+  const save = useMutation({
+    mutationFn: async () => {
+      if (!hours) return;
+      await updateBusinessHours(hours);
+    },
+    onSuccess: () => {
+      toast.success("Οι ώρες ενημερώθηκαν.");
+      void queryClient.invalidateQueries({ queryKey: ["business_hours"] });
+    },
+    onError: (e: unknown) => toast.error(e instanceof Error ? e.message : "Κάτι πήγε στραβά."),
+  });
+
+  if (hoursQuery.isLoading || !hours) return null;
+
+  return (
+    <section className="rounded-[2rem] border border-border bg-card p-6 md:p-8">
+      <h2 className="mb-6 text-xl font-bold text-foreground">Ώρες λειτουργίας</h2>
+      <div className="grid gap-5 md:grid-cols-3">
+        <label className="block space-y-2">
+          <span className="text-sm font-semibold text-foreground">Δευτέρα — Παρασκευή</span>
+          <input
+            value={hours.weekday_hours}
+            onChange={(e) => setForm({ ...hours, weekday_hours: e.target.value })}
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm"
+          />
+        </label>
+        <label className="block space-y-2">
+          <span className="text-sm font-semibold text-foreground">Σάββατο</span>
+          <input
+            value={hours.saturday_hours}
+            onChange={(e) => setForm({ ...hours, saturday_hours: e.target.value })}
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm"
+          />
+        </label>
+        <label className="block space-y-2">
+          <span className="text-sm font-semibold text-foreground">Κυριακή</span>
+          <input
+            value={hours.sunday_hours}
+            onChange={(e) => setForm({ ...hours, sunday_hours: e.target.value })}
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm"
+          />
+        </label>
+      </div>
+      <Button className="mt-5" onClick={() => save.mutate()} disabled={save.isPending}>
+        {save.isPending ? "Αποθήκευση…" : "Αποθήκευση ωρών"}
+      </Button>
+    </section>
+  );
+}
+
 function Manager() {
   const queryClient = useQueryClient();
   const [form, setForm] = useState<FormState>(emptyForm);
@@ -240,6 +299,8 @@ function Manager() {
       </header>
 
       <main className="mx-auto max-w-5xl space-y-10 px-5 py-8">
+        <HoursEditor />
+
         <section className="rounded-[2rem] border border-border bg-card p-6 md:p-8">
           <h2 className="mb-6 text-xl font-bold text-foreground">
             {editingId ? "Επεξεργασία καταχώρησης" : "Νέα καταχώρηση"}
