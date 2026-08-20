@@ -213,9 +213,9 @@ function PublicSite() {
           <div className="mx-auto max-w-7xl px-5">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div className="space-y-8">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
-                  <GraduationCap className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-bold">Ένας χώρος φτιαγμένος για μαθητές</span>
+                <div className="flex items-center gap-2">
+                  <GraduationCap className="h-6 w-6 text-primary" />
+                  <span className="text-lg md:text-xl font-bold text-primary">Ένας χώρος φτιαγμένος για μαθητές</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                   Λίγα λόγια για μας
