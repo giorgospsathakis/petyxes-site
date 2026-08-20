@@ -26,7 +26,10 @@ export const Route = createFileRoute("/mathimata")({
   component: CoursesPage,
 });
 
+const featuredActivities = ["Εργαστήρια δεξιοτήτων", "Ανοιχτές εκδηλώσεις γονέων"];
+
 function CoursesPage() {
+  const shownActivities = activities.filter((a) => featuredActivities.includes(a.title));
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -63,8 +66,8 @@ function CoursesPage() {
               <h2 className="text-3xl font-bold text-foreground md:text-4xl">Δράσεις & εκδηλώσεις</h2>
               <p className="text-lg text-muted-foreground">Μαθαίνουμε μέσα και έξω από την τάξη.</p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {activities.map((a) => {
+           <div className="grid gap-6 md:grid-cols-2">
+              {shownActivities.map((a) => {
                 const Icon = a.icon;
                 return (
                   <div key={a.title} className="overflow-hidden rounded-[2rem] border border-border bg-card">
