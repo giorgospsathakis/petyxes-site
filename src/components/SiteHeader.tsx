@@ -33,11 +33,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
-      <div
-        className={`mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 transition-[padding] duration-300 ease-out ${
-          scrolled ? "py-3" : "py-6 md:py-8"
-        }`}
-      >
+            <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 py-4">
         <div className="flex items-center">
           <button
             type="button"
@@ -49,11 +45,17 @@ export function SiteHeader() {
           </button>
         </div>
 
-        <Link to="/" className="flex items-center justify-center" onClick={() => setOpen(false)}>
+        <Link
+          to="/"
+          className="flex h-20 items-center justify-center md:h-24"
+          onClick={() => setOpen(false)}
+        >
           <img
             src={logo}
             alt="Πέτυχες!"
-            className={`w-auto object-contain transition-[height] duration-300 ease-out ${scrolled ? "h-9" : "h-20 md:h-24"}`}
+            className={`h-20 w-auto origin-center object-contain transition-transform duration-300 ease-out will-change-transform md:h-24 ${
+              scrolled ? "scale-[0.45]" : "scale-100"
+            }`}
           />
         </Link>
 
