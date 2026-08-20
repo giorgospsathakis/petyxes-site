@@ -213,12 +213,8 @@ function PublicSite() {
           <div className="mx-auto max-w-7xl px-5">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div className="space-y-8">
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="h-6 w-6 text-primary" />
-                  <span className="text-lg md:text-xl font-bold text-primary">Ένας χώρος φτιαγμένος για μαθητές</span>
-                </div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                  Λίγα λόγια για μας
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-primary">
+                  Ένας χώρος φτιαγμένος για μαθητές
                 </h2>
                 <p className="text-lg text-primary-foreground/80 leading-relaxed">
                   Πιστεύουμε στη συνεργασία μεταξύ μαθητή, καθηγητή και γονέα. Κάθε παιδί είναι ξεχωριστό, και η προσέγγισή μας προσαρμόζεται στις ανάγκες του.
