@@ -30,15 +30,26 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  
+
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
       <div
-        className={`mx-auto flex max-w-7xl items-center gap-4 px-5 transition-[padding] duration-300 ease-out ${
-          scrolled ? "justify-between py-3" : "justify-center py-6 md:py-8"
+        className={`mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 transition-[padding] duration-300 ease-out ${
+          scrolled ? "py-3" : "py-6 md:py-8"
         }`}
       >
-        <Link to="/" className="flex items-center" onClick={() => setOpen(false)}>
+        <div className="flex items-center">
+          <button
+            type="button"
+            aria-label="Μενού"
+            className="rounded-full p-2 text-foreground transition-colors hover:bg-secondary md:hidden"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        <Link to="/" className="flex items-center justify-center" onClick={() => setOpen(false)}>
           <img
             src={logo}
             alt="Πέτυχες!"
@@ -46,11 +57,7 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav
-          className={`items-center gap-1 transition-[opacity,width] duration-300 ease-out md:flex ${
-            scrolled ? "hidden opacity-100 md:flex" : "hidden opacity-0 md:flex md:w-0 md:overflow-hidden"
-          }`}
-        >
+        <nav className="hidden items-center justify-end gap-1 md:flex">
           {links.map((l) => (
             <Link
               key={l.to}
@@ -63,15 +70,6 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-
-        <button
-          type="button"
-          aria-label="Μενού"
-          className="rounded-full p-2 text-foreground transition-colors hover:bg-secondary md:hidden"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
       </div>
 
       {open && (
