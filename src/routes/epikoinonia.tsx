@@ -26,9 +26,10 @@ export const Route = createFileRoute("/epikoinonia")({
 });
 
 const details = [
-  { icon: MapPin, label: "Διεύθυνση", value: "Συμπληρώστε τη διεύθυνση του φροντιστηρίου σας" },
-  { icon: Phone, label: "Τηλέφωνο", value: "Συμπληρώστε το τηλέφωνο επικοινωνίας" },
-  { icon: Mail, label: "Email", value: "Συμπληρώστε το email του φροντιστηρίου" },
+ const details = [
+  { icon: MapPin, label: "Διεύθυνση", value: "Πύργος Μονοφατσίου, Τ.Κ. 70010" },
+  { icon: Phone, label: "Τηλέφωνο", value: "289 302 2032 / 698 835 1017" },
+  { icon: Mail, label: "Email", value: "petyxesfront@gmail.com" },
 ];
 
 function ContactPage() {
