@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
-
+import { useQuery } from "@tanstack/react-query";
+import { fetchBusinessHours } from "@/lib/site-content";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { siteUrl } from "@/lib/site-url";
@@ -30,6 +31,10 @@ export const Route = createFileRoute("/epikoinonia")({
   { icon: Mail, label: "Email", value: "petyxesfront@gmail.com" },
 ];
 function ContactPage() {
+  const { data: hours } = useQuery({ queryKey: ["business_hours"], queryFn: fetchBusinessHours });
+  const weekday = hours?.weekday_hours ?? "15:00 — 21:00";
+  const saturday = hours?.saturday_hours ?? "10:00 — 14:00";
+  const sunday = hours?.sunday_hours ?? "Κλειστά";
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -68,12 +73,16 @@ function ContactPage() {
                 <span className="font-bold text-foreground">15:00 — 21:00</span>
               </li>
               <li className="flex justify-between border-b border-border pb-3">
+                <span>Δευτέρα — Παρασκευή</span>
+                <span className="font-bold text-foreground">{weekday}</span>
+              </li>
+              <li className="flex justify-between border-b border-border pb-3">
                 <span>Σάββατο</span>
-                <span className="font-bold text-foreground">10:00 — 14:00</span>
+                <span className="font-bold text-foreground">{saturday}</span>
               </li>
               <li className="flex justify-between pt-1">
                 <span>Κυριακή</span>
-                <span className="font-bold text-foreground">Κλειστά</span>
+                <span className="font-bold text-foreground">{sunday}</span>
               </li>
             </ul>
             <div className="mt-8 rounded-2xl bg-secondary p-5 text-center text-sm text-muted-foreground">
