@@ -148,11 +148,6 @@ function PublicSite() {
                   <span className="absolute bottom-2 left-0 w-full h-4 bg-primary/20 -z-10 rounded-sm" />
                 </span>
               </h1>
-
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-                Φροντιστηριακά μαθήματα, κέντρο μελέτης και δημιουργικές δράσεις. Ένας χώρος που συνδυάζει γνώση, φροντίδα και έμπνευση.
-              </p>
-
               <div className="flex flex-wrap gap-4 pt-2">
                 <Button asChild size="lg" className="group relative overflow-hidden hover:pr-12 transition-all">
                   <a href="/epikoinonia">
@@ -223,11 +218,8 @@ function PublicSite() {
                   <span className="text-sm font-bold">Ένας χώρος φτιαγμένος για μαθητές</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                  Το «Πέτυχες!» είναι πολύ περισσότερο από ένα φροντιστήριο.
+                  Λίγα λόγια για μας
                 </h2>
-                <p className="text-lg text-primary-foreground/80 leading-relaxed">
-                  Είναι ένα κέντρο μελέτης και δημιουργίας όπου κάθε μαθητής ανακαλύπτει τις δυνατότητές του, βελτιώνει τις επιδόσεις του και χτίζει αυτοπεποίθηση.
-                </p>
                 <p className="text-lg text-primary-foreground/80 leading-relaxed">
                   Πιστεύουμε στη συνεργασία μεταξύ μαθητή, καθηγητή και γονέα. Κάθε παιδί είναι ξεχωριστό, και η προσέγγισή μας προσαρμόζεται στις ανάγκες του.
                 </p>
