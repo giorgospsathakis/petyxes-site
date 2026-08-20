@@ -194,8 +194,8 @@ function PublicSite() {
 
               <div className="col-span-6 row-span-4 col-start-3 row-start-9 bg-accent rounded-[2rem] overflow-hidden shadow-xl border-4 border-white flex items-center justify-center p-6 text-center">
                 <div className="space-y-2">
-                  <div className="text-3xl font-bold text-primary">20+</div>
-                  <div className="text-white text-sm font-medium">Έτη Εμπειρίας στην Εκπαίδευση</div>
+                                   <div className="text-3xl font-bold text-primary">95%</div>
+                  <div className="text-white text-sm font-medium">Ποσοστό Επιτυχίας Μαθητών</div>
                 </div>
               </div>
 
