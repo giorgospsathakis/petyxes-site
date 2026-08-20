@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import logo from "@/assets/logo-petyxes.png";
@@ -14,15 +14,31 @@ const links = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
+      <div
+        className={`mx-auto flex max-w-7xl gap-4 px-5 transition-all duration-300 ${
+          scrolled ? "flex-row items-center justify-between py-3" : "flex-col items-center justify-center py-6 md:py-8"
+        }`}
+      >
         <Link to="/" className="flex items-center" onClick={() => setOpen(false)}>
-          <img src={logo} alt="Πέτυχες!" className="h-9 w-auto object-contain" />
+          <img
+            src={logo}
+            alt="Πέτυχες!"
+            className={`w-auto object-contain transition-all duration-300 ${scrolled ? "h-9" : "h-20 md:h-24"}`}
+          />
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className={`hidden items-center gap-1 md:flex ${scrolled ? "" : "mt-2"}`}>
           {links.map((l) => (
             <Link
               key={l.to}
@@ -39,7 +55,7 @@ export function SiteHeader() {
         <button
           type="button"
           aria-label="Μενού"
-          className="rounded-full p-2 text-foreground transition-colors hover:bg-secondary md:hidden"
+          className={`rounded-full p-2 text-foreground transition-colors hover:bg-secondary md:hidden ${scrolled ? "" : "mt-2"}`}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
