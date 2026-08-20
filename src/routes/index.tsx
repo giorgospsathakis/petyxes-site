@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { GraduationCap, ArrowRight, CalendarDays, FileText, TrendingUp, Bell, MessageCircle } from "lucide-react";
 import heroStudents from "@/assets/hero-students.jpg";
 import heroTeacher from "@/assets/hero-teacher.jpg";
+import heroStudy from "@/assets/hero-study.jpg";
 import appScreenshot from "@/assets/app-screenshot.png";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -288,7 +289,6 @@ function PublicSite() {
             </div>
           </div>
         </section>
-</parameter>
       {/* Offerings */}
         <section id="paroxes" className="mx-auto max-w-7xl px-5 py-20 md:py-28">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
