@@ -15,6 +15,7 @@ import heroStudy from "@/assets/hero-study.jpg";
 import serviceClassroom from "@/assets/service-classroom.jpg";
 import serviceStudy from "@/assets/service-study.jpg";
 import serviceTutoring from "@/assets/service-tutoring.jpg";
+import serviceExams from "@/assets/service-exams.jpg";
 import activityExcursion from "@/assets/activity-excursion.jpg";
 import activityWorkshop from "@/assets/activity-workshop.jpg";
 import activityParents from "@/assets/activity-parents.jpg";
@@ -40,9 +41,9 @@ export const offerings = [
   },
   {
     icon: Presentation,
-    title: "Προσομοιώσεις & διαγωνίσματα",
+    title: "Προσομοιώσεις &amp; διαγωνίσματα",
     text: "Τακτικές προσομοιώσεις, συμμετοχή στα διαγωνίσματα ΟΕΦΕ — ΕΙΜΑΣΤΕ ΜΕΣΑ!, αναλυτική βαθμολόγηση και στοχευμένη προετοιμασία για εξετάσεις.",
-    image: serviceClassroom,
+    image: serviceExams,
   },
   {
     icon: Users,
