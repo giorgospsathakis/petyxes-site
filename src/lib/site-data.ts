@@ -15,7 +15,7 @@ import heroStudy from "@/assets/hero-study.jpg";
 import serviceClassroom from "@/assets/service-classroom.jpg";
 import serviceStudy from "@/assets/service-study.jpg";
 import serviceTutoring from "@/assets/service-tutoring.jpg";
-import serviceExams from "@/assets/service-exams.jpg";
+import serviceCommunication from "@/assets/service-communication.jpg";import serviceExams from "@/assets/service-exams.jpg";
 import activityExcursion from "@/assets/activity-excursion.jpg";
 import activityWorkshop from "@/assets/activity-workshop.jpg";
 import activityParents from "@/assets/activity-parents.jpg";
@@ -41,7 +41,7 @@ export const offerings = [
   },
   {
     icon: Presentation,
-    title: "Προσομοιώσεις &amp; διαγωνίσματα",
+    title: "Προσομοιώσεις & διαγωνίσματα",
     text: "Τακτικές προσομοιώσεις, συμμετοχή στα διαγωνίσματα ΟΕΦΕ — ΕΙΜΑΣΤΕ ΜΕΣΑ!, αναλυτική βαθμολόγηση και στοχευμένη προετοιμασία για εξετάσεις.",
     image: serviceExams,
   },
@@ -55,7 +55,7 @@ export const offerings = [
     icon: Phone,
     title: "Επικοινωνία με γονείς",
     text: "Τακτική ενημέρωση για πρόοδο, παρουσίες και θέματα συμπεριφοράς, με διαφάνεια και εμπιστοσύνη.",
-    image: serviceTutoring,
+    image: serviceCommunication,
   },
 ];
 
