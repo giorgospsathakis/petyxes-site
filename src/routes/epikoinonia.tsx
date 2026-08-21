@@ -83,6 +83,7 @@ function ContactPage() {
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
+          </div>
 
           <div className="rounded-[2.5rem] border border-border bg-card p-8 shadow-sm md:p-10">
             <h2 className="mb-6 text-xl font-bold text-foreground">Ώρες λειτουργίας</h2>
