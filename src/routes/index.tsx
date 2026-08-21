@@ -213,15 +213,12 @@ function PublicSite() {
           <div className="mx-auto max-w-7xl px-5">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div className="space-y-8">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-primary">
-                  Ένας χώρος φτιαγμένος για μαθητές
-                </h2>
-                <p className="text-lg text-primary-foreground/80 leading-relaxed">
+                <p className="text-xl md:text-2xl text-primary-foreground/80 leading-relaxed">
                   Πιστεύουμε στη συνεργασία μεταξύ μαθητή, καθηγητή και γονέα. Κάθε παιδί είναι ξεχωριστό, και η προσέγγισή μας προσαρμόζεται στις ανάγκες του.
                 </p>
               </div>
               <div className="rounded-[2.5rem] bg-primary/10 p-8 md:p-10">
-                <ul className="space-y-6">
+                <ul className="space-y-5">
                   {[
                     "Έμπειροι και φιλόδοξοι καθηγητές",
                     "Μικρά και ομοιογενή τμήματα",
@@ -229,9 +226,14 @@ function PublicSite() {
                     "Άμεση ενημέρωση γονέων",
                     "Φιλικό και ασφαλές περιβάλλον",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-4 text-lg">
-                      <span className="mt-2 h-2.5 w-2.5 flex-none rounded-full bg-primary" />
-                      <span className="font-medium">{item}</span>
+                    <li
+                      key={item}
+                      className="flex items-center gap-4 rounded-2xl bg-white/5 px-5 py-4 text-lg md:text-xl"
+                    >
+                      <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
+                        ✓
+                      </span>
+                      <span className="font-semibold">{item}</span>
                     </li>
                   ))}
                 </ul>
