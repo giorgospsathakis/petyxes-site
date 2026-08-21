@@ -326,45 +326,6 @@ function PublicSite() {
           </div>
         </section>
 
-        {/* Activities */}
-        <section className="bg-secondary/50 py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-5">
-            <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">Δράσεις & εκδηλώσεις</h2>
-              <p className="text-muted-foreground text-lg">Μαθαίνουμε μέσα και έξω από την τάξη.</p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {activities.map((a) => {
-                const Icon = a.icon;
-                return (
-                  <div
-                    key={a.title}
-                    className="group bg-card rounded-[2rem] overflow-hidden border border-border transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/10"
-                  >
-                    <div className="h-48 overflow-hidden">
-                      <img
-                        src={a.image}
-                        alt={a.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        width={1024}
-                        height={768}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="p-6 text-center">
-                      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="text-lg font-bold text-foreground mb-2">{a.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{a.text}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         <DynamicSections />
 
         {/* CTA */}
