@@ -49,7 +49,7 @@ export const offerings = [
     icon: Users,
     title: "Συμβουλευτική προσανατολισμού",
     text: "Συζητήσεις με μαθητές και γονείς για στόχους, τρόπους μελέτης και επιλογές σπουδών.",
-    image: serviceStudy,
+    image: serviceTutoring,
   },
   {
     icon: Phone,
