@@ -142,9 +142,9 @@ function PublicSite() {
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-foreground">
-                Εδώ μαθαίνεις και{" "}
+                Ένας χώρος φτιαγμένος για{" "}
                 <span className="relative inline-block text-primary">
-                  πετυχαίνεις.
+                  μαθητές.
                   <span className="absolute bottom-2 left-0 w-full h-4 bg-primary/20 -z-10 rounded-sm" />
                 </span>
               </h1>
