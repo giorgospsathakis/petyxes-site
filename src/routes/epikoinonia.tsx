@@ -70,10 +70,6 @@ function ContactPage() {
             <ul className="space-y-4 text-muted-foreground">
               <li className="flex justify-between border-b border-border pb-3">
                 <span>Δευτέρα — Παρασκευή</span>
-                <span className="font-bold text-foreground">15:00 — 21:00</span>
-              </li>
-              <li className="flex justify-between border-b border-border pb-3">
-                <span>Δευτέρα — Παρασκευή</span>
                 <span className="font-bold text-foreground">{weekday}</span>
               </li>
               <li className="flex justify-between border-b border-border pb-3">
