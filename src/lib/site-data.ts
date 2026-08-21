@@ -15,7 +15,7 @@ import heroStudy from "@/assets/hero-study.jpg";
 import serviceClassroom from "@/assets/service-classroom.jpg";
 import serviceStudy from "@/assets/service-study.jpg";
 import serviceTutoring from "@/assets/service-tutoring.jpg";
-import serviceCounseling from "@/assets/service-counseling.jpg";import serviceCommunication from "@/assets/service-communication.jpg";import serviceExams from "@/assets/service-exams.jpg";
+import serviceCommunication from "@/assets/service-communication.jpg";import serviceExams from "@/assets/service-exams.jpg";
 import activityExcursion from "@/assets/activity-excursion.jpg";
 import activityWorkshop from "@/assets/activity-workshop.jpg";
 import activityParents from "@/assets/activity-parents.jpg";
@@ -49,7 +49,7 @@ export const offerings = [
     icon: Users,
     title: "Συμβουλευτική προσανατολισμού",
     text: "Συζητήσεις με μαθητές και γονείς για στόχους, τρόπους μελέτης και επιλογές σπουδών.",
-    image: serviceCounseling,
+    image: serviceStudy,
   },
   {
     icon: Phone,
