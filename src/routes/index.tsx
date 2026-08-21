@@ -208,37 +208,31 @@ function PublicSite() {
           </div>
         </section>
 
-        {/* About */}
+         {/* About */}
         <section className="bg-accent text-accent-foreground py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-5">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <div className="space-y-8">
-                <p className="text-xl md:text-2xl text-primary-foreground/80 leading-relaxed">
-                  Πιστεύουμε στη συνεργασία μεταξύ μαθητή, καθηγητή και γονέα. Κάθε παιδί είναι ξεχωριστό, και η προσέγγισή μας προσαρμόζεται στις ανάγκες του.
-                </p>
-              </div>
-              <div className="rounded-[2.5rem] bg-primary/10 p-8 md:p-10">
-                <ul className="space-y-5">
-                  {[
-                    "Έμπειροι και φιλόδοξοι καθηγητές",
-                    "Μικρά και ομοιογενή τμήματα",
-                    "Σύγχρονες μεθοδολογίες διδασκαλίας",
-                    "Άμεση ενημέρωση γονέων",
-                    "Φιλικό και ασφαλές περιβάλλον",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-4 rounded-2xl bg-white/5 px-5 py-4 text-lg md:text-xl"
-                    >
-                      <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                        ✓
-                      </span>
-                      <span className="font-semibold">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+          <div className="mx-auto max-w-5xl px-5 space-y-14">
+            <p className="mx-auto max-w-2xl text-center text-xl md:text-2xl text-primary-foreground/80 leading-relaxed">
+              Πιστεύουμε στη συνεργασία μεταξύ μαθητή, καθηγητή και γονέα. Κάθε παιδί είναι ξεχωριστό, και η προσέγγισή μας προσαρμόζεται στις ανάγκες του.
+            </p>
+            <ul className="grid gap-5 sm:grid-cols-2">
+              {[
+                "Έμπειροι και φιλόδοξοι καθηγητές",
+                "Μικρά και ομοιογενή τμήματα",
+                "Σύγχρονες μεθοδολογίες διδασκαλίας",
+                "Άμεση ενημέρωση γονέων",
+                "Φιλικό και ασφαλές περιβάλλον",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-4 rounded-2xl bg-primary/10 px-5 py-4 text-lg"
+                >
+                  <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
+                    ✓
+                  </span>
+                  <span className="font-semibold">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 {/* App Promo */}
