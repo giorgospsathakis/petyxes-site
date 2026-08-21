@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchBusinessHours } from "@/lib/site-content";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -47,7 +47,7 @@ function ContactPage() {
                 Θέλετε να μάθετε περισσότερα για τα τμήματα και το πρόγραμμα; Επικοινωνήστε μαζί μας.
               </p>
             </div>
-            <div className="space-y-5">
+             <div className="space-y-5">
               {details.map((d) => {
                 const Icon = d.icon;
                 return (
@@ -63,7 +63,26 @@ function ContactPage() {
                 );
               })}
             </div>
-          </div>
+            <div className="flex items-center gap-4 pt-2">
+              <a
+                href="https://www.facebook.com/profile.php?id=61564729942943"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform hover:scale-105"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.instagram.com/kentro_meletis_front_petyxes/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform hover:scale-105"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+            </div>
 
           <div className="rounded-[2.5rem] border border-border bg-card p-8 shadow-sm md:p-10">
             <h2 className="mb-6 text-xl font-bold text-foreground">Ώρες λειτουργίας</h2>
