@@ -111,3 +111,19 @@ export async function updateBusinessHours(hours: BusinessHours): Promise<void> {
   const { error } = await supabase.from("site_settings").update(hours).eq("id", 1);
   if (error) throw error;
 }
+export type CourseGroup = {
+  id: string;
+  title: string;
+  description: string | null;
+  subjects: string[];
+  sort_order: number;
+};
+
+export async function fetchCourseGroups(): Promise<CourseGroup[]> {
+  const { data, error } = await supabase
+    .from("course_groups")
+    .select("*")
+    .order("sort_order", { ascending: true });
+  if (error) throw error;
+  return data as CourseGroup[];
+}
