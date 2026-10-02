@@ -10,11 +10,13 @@ import {
   deleteMedia,
   fetchAllPosts,
   fetchBusinessHours,
+  fetchCourseGroups,
   formatDate,
   swapOrder,
   updateBusinessHours,
   uploadMedia,
   type BusinessHours,
+  type CourseGroup,
   type PostCategory,
   type SitePost,
 } from "@/lib/site-content";
