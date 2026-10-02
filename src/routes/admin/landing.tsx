@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
-
 import { supabase } from "@/integrations/supabase/client";
 import { useRoles, useSession } from "@/lib/auth";
 import {
@@ -192,6 +191,133 @@ function HoursEditor() {
   );
 }
 
+function CourseGroupsEditor() {
+  const queryClient = useQueryClient();
+  const groupsQuery = useQuery({ queryKey: ["course_groups"], queryFn: fetchCourseGroups });
+  const groups = groupsQuery.data ?? [];
+
+  const save = useMutation({
+    mutationFn: async (g: CourseGroup) => {
+      const { error } = await supabase
+        .from("course_groups")
+        .update({ title: g.title, description: g.description, subjects: g.subjects })
+        .eq("id", g.id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success("Αποθηκεύτηκε.");
+      void queryClient.invalidateQueries({ queryKey: ["course_groups"] });
+    },
+    onError: (e: unknown) => toast.error(e instanceof Error ? e.message : "Κάτι πήγε στραβά."),
+  });
+
+  const addGroup = useMutation({
+    mutationFn: async () => {
+      const { error } = await supabase
+        .from("course_groups")
+        .insert({ title: "Νέο τμήμα", description: null, subjects: [], sort_order: groups.length });
+      if (error) throw error;
+    },
+    onSuccess: () => void queryClient.invalidateQueries({ queryKey: ["course_groups"] }),
+  });
+
+  const removeGroup = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("course_groups").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success("Διαγράφηκε.");
+      void queryClient.invalidateQueries({ queryKey: ["course_groups"] });
+    },
+  });
+
+  if (groupsQuery.isLoading) return null;
+
+  return (
+    <section className="rounded-[2rem] border border-border bg-card p-6 md:p-8">
+      <div className="mb-6 flex items-center justify-between">
+        <h2 className="text-xl font-bold text-foreground">Μαθήματα & τμήματα</h2>
+        <Button size="sm" onClick={() => addGroup.mutate()}>+ Νέο τμήμα</Button>
+      </div>
+      <div className="space-y-6">
+        {groups.map((g) => (
+          <CourseGroupRow
+            key={g.id}
+            group={g}
+            onSave={(updated) => save.mutate(updated)}
+            onDelete={() => {
+              if (confirm("Διαγραφή τμήματος;")) removeGroup.mutate(g.id);
+            }}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function CourseGroupRow({
+  group,
+  onSave,
+  onDelete,
+}: {
+  group: CourseGroup;
+  onSave: (g: CourseGroup) => void;
+  onDelete: () => void;
+}) {
+  const [title, setTitle] = useState(group.title);
+  const [description, setDescription] = useState(group.description ?? "");
+  const [subjectsText, setSubjectsText] = useState(group.subjects.join(", "));
+
+  return (
+    <div className="rounded-2xl border border-border p-5">
+      <div className="grid gap-4 md:grid-cols-2">
+        <label className="block space-y-2">
+          <span className="text-sm font-semibold text-foreground">Τίτλος</span>
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm"
+          />
+        </label>
+        <label className="block space-y-2">
+          <span className="text-sm font-semibold text-foreground">Περιγραφή (προαιρετικά)</span>
+          <input
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm"
+          />
+        </label>
+      </div>
+      <label className="mt-4 block space-y-2">
+        <span className="text-sm font-semibold text-foreground">Μαθήματα (χωρισμένα με κόμμα)</span>
+        <input
+          value={subjectsText}
+          onChange={(e) => setSubjectsText(e.target.value)}
+          placeholder="π.χ. Μαθηματικά, Φυσική, Χημεία"
+          className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm"
+        />
+      </label>
+      <div className="mt-4 flex gap-3">
+        <Button
+          size="sm"
+          onClick={() =>
+            onSave({
+              ...group,
+              title,
+              description: description.trim() || null,
+              subjects: subjectsText.split(",").map((s) => s.trim()).filter(Boolean),
+            })
+          }
+        >
+          Αποθήκευση
+        </Button>
+        <Button size="sm" variant="destructive" onClick={onDelete}>Διαγραφή</Button>
+      </div>
+    </div>
+  );
+}
+
 function Manager() {
   const queryClient = useQueryClient();
   const [form, setForm] = useState<FormState>(emptyForm);
@@ -302,6 +428,7 @@ function Manager() {
 
       <main className="mx-auto max-w-5xl space-y-10 px-5 py-8">
         <HoursEditor />
+        <CourseGroupsEditor />
 
         <section className="rounded-[2rem] border border-border bg-card p-6 md:p-8">
           <h2 className="mb-6 text-xl font-bold text-foreground">
