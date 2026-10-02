@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { CheckCircle2 } from "lucide-react";
 
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { courseGroups, activities } from "@/lib/site-data";
+import { fetchCourseGroups } from "@/lib/site-content";
 import { siteUrl } from "@/lib/site-url";
 
 export const Route = createFileRoute("/mathimata")({
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/mathimata")({
       {
         name: "description",
         content:
-          "Τμήματα Γυμνασίου, Λυκείου και προετοιμασία για Πανελλαδικές. Δείτε τα μαθήματα, τις κατευθύνσεις και τις δράσεις του φροντιστηρίου.",
+          "Τμήματα Γυμνασίου, Λυκείου και προετοιμασία για Πανελλαδικές. Δείτε τα μαθήματα και τις κατευθύνσεις του φροντιστηρίου.",
       },
       { property: "og:title", content: "Μαθήματα & τμήματα — Πέτυχες!" },
       { property: "og:description", content: "Τμήματα Γυμνασίου, Λυκείου και προετοιμασία για Πανελλαδικές." },
@@ -26,10 +27,8 @@ export const Route = createFileRoute("/mathimata")({
   component: CoursesPage,
 });
 
-const featuredActivities = ["Εργαστήρια δεξιοτήτων", "Ανοιχτές εκδηλώσεις γονέων"];
-
 function CoursesPage() {
-  const shownActivities = activities.filter((a) => featuredActivities.includes(a.title));
+  const { data: courseGroups = [] } = useQuery({ queryKey: ["course_groups"], queryFn: fetchCourseGroups });
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -44,13 +43,10 @@ function CoursesPage() {
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {courseGroups.map((g) => (
-              <div key={g.title} className="rounded-[2rem] border border-border bg-card p-8 transition-shadow hover:shadow-xl">
+              <div key={g.id} className="rounded-[2rem] border border-border bg-card p-8 transition-shadow hover:shadow-xl">
                 <h2 className="text-xl font-bold text-foreground">{g.title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{g.text}</p>
-                {g.title === "Β΄ & Γ΄ Λυκείου — Πανελλαδικές" && (
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Εντατική προετοιμασία <strong className="font-bold text-foreground">σε όλα τα μαθήματα</strong>.
-                  </p>
+                {g.description && (
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{g.description}</p>
                 )}
                 <ul className="mt-6 space-y-3">
                   {g.subjects.map((s) => (
@@ -62,32 +58,6 @@ function CoursesPage() {
                 </ul>
               </div>
             ))}
-          </div>
-        </section>
-
-        <section className="bg-secondary/50 py-16 md:py-24">
-          <div className="mx-auto max-w-7xl px-5">
-            <div className="mx-auto mb-12 max-w-2xl space-y-4 text-center">
-              <h2 className="text-3xl font-bold text-foreground md:text-4xl">Δράσεις & εκδηλώσεις</h2>
-              <p className="text-lg text-muted-foreground">Μαθαίνουμε μέσα και έξω από την τάξη.</p>
-            </div>
-           <div className="grid gap-6 md:grid-cols-2">
-              {shownActivities.map((a) => {
-                const Icon = a.icon;
-                return (
-                  <div key={a.title} className="overflow-hidden rounded-[2rem] border border-border bg-card">
-                    <img src={a.image} alt={a.title} className="h-44 w-full object-cover" loading="lazy" />
-                    <div className="p-6 text-center">
-                      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="mb-2 text-lg font-bold text-foreground">{a.title}</h3>
-                      <p className="text-sm leading-relaxed text-muted-foreground">{a.text}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
           </div>
         </section>
       </main>
