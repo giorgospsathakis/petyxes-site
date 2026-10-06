@@ -13,6 +13,7 @@ import { Toaster } from "@/components/ui/sonner";
 import appCss from "../styles.css?url";
 
 import { supabase } from "@/integrations/supabase/client";
+import { ThemeProvider } from "@/lib/theme";
 
 function NotFoundComponent() {
   return (
@@ -96,7 +97,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap",      },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
-
+    scripts: [
+      {
+        children: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()`,
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -131,11 +136,13 @@ function RootComponent() {
     return () => sub.subscription.unsubscribe();
   }, [router, queryClient]);
 
-  return (
+ return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-      <Toaster richColors position="top-center" />
+      <ThemeProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+        <Toaster richColors position="top-center" />
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
