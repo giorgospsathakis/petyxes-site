@@ -90,3 +90,5 @@ export function SiteHeader() {
     </header>
   );
 }
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/lib/theme";
