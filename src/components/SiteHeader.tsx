@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 
 import logo from "@/assets/logo-petyxes.png";
+import { useTheme } from "@/lib/theme";
 
 const links = [
   { to: "/", label: "Αρχική" },
@@ -14,6 +15,7 @@ const links = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     let ticking = false;
@@ -32,7 +34,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
-            <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 py-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 py-4">
         <div className="flex items-center">
           <button
             type="button"
@@ -70,6 +72,14 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
+          <button
+            type="button"
+            aria-label="Εναλλαγή σκοτεινού θέματος"
+            onClick={toggle}
+            className="ml-1 rounded-full p-2.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          >
+            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </button>
         </nav>
       </div>
 
@@ -85,10 +95,16 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
+          <button
+            type="button"
+            onClick={toggle}
+            className="mt-2 flex w-full items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
+          >
+            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            {theme === "dark" ? "Φωτεινό θέμα" : "Σκοτεινό θέμα"}
+          </button>
         </nav>
       )}
     </header>
   );
 }
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "@/lib/theme";
