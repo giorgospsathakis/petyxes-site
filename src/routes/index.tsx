@@ -211,7 +211,7 @@ function PublicSite() {
          {/* About */}
         <section className="bg-accent text-accent-foreground py-20 md:py-28">
           <div className="mx-auto max-w-5xl px-5 space-y-14">
-            <p className="mx-auto max-w-2xl text-center text-xl md:text-2xl text-primary-foreground/80 leading-relaxed">
+            <p className="mx-auto max-w-2xl text-center text-xl md:text-2xl text-accent-foreground leading-relaxed">
               Πιστεύουμε στη συνεργασία μεταξύ μαθητή, καθηγητή και γονέα. Κάθε παιδί είναι ξεχωριστό, και η προσέγγισή μας προσαρμόζεται στις ανάγκες του.
             </p>
             <ul className="grid gap-5 sm:grid-cols-2">
@@ -223,9 +223,9 @@ function PublicSite() {
                 "Φιλικό και ασφαλές περιβάλλον",
               ].map((item) => (
                 <li
-                  key={item}
-                  className="flex items-center gap-4 rounded-2xl bg-primary/10 px-5 py-4 text-lg"
-                >
+  key={item}
+  className="flex items-center gap-4 rounded-2xl bg-accent-foreground/10 px-5 py-4 text-lg"
+>
                   <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
                     ✓
                   </span>
