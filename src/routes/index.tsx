@@ -328,7 +328,7 @@ function PublicSite() {
         <section className="mx-auto max-w-7xl px-5 py-20 md:py-28">
           <div className="rounded-[2.5rem] bg-accent px-8 py-14 text-center text-accent-foreground md:px-16">
             <h2 className="text-3xl font-bold md:text-4xl">Θέλετε να μάθετε περισσότερα;</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-primary-foreground/80">
+                        <p className="mx-auto mt-4 max-w-2xl text-lg text-accent-foreground/80">
               Δείτε τα τμήματα και το πρόγραμμά μας ή επικοινωνήστε μαζί μας για μια πρώτη γνωριμία.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
