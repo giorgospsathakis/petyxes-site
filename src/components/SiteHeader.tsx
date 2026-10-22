@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
+
 import { useEffect, useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
-
+import espaBanner from "@/assets/espa-banner.jpg";
 import logo from "@/assets/logo-petyxes.png";
 import { useTheme } from "@/lib/theme";
 
@@ -34,6 +35,9 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
+      <div className="flex justify-center border-b border-border bg-background px-4 py-1.5">
+  <img src={espaBanner} alt="Με τη συγχρηματοδότηση της Ευρωπαϊκής Ένωσης — ΕΣΠΑ 2021-2027 — Πρόγραμμα Ανταγωνιστικότητα" className="h-8 w-auto object-contain md:h-9" />
+</div>
       <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 py-4">
         <div className="flex items-center">
           <button
